@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Coding Review — Login Lab</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    h1 { font-size: 1.35rem; }
+    ul { padding-left: 1.25rem; }
+    a { color: #0b57d0; }
+  </style>
+</head>
+<body>
+  <h1>Secure Coding Review — Login Lab</h1>
+  <p>Project: <a href="https://github.com/DAX1208/CodeAlpha_codereview" rel="noopener">CodeAlpha_codereview</a>. Compare vulnerable vs fixed patterns (inspired by <a href="https://github.com/Harsh-jethva/CodeAlpha_Secure-Coding-Review-" rel="noopener">CodeAlpha_Secure-Coding-Review-</a>).</p>
+  <ul>
+    <li><a href="{{ url_for('vulnerable_page') }}">Vulnerable login</a> — SQL injection and unsafe patterns (lab only).</li>
+    <li><a href="{{ url_for('secure_page') }}">Secure login</a> — parameterized queries, bcrypt, safer errors.</li>
+  </ul>
+</body>
+</html>
