@@ -4,19 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Secure Coding Review — Login Lab</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
-    h1 { font-size: 1.35rem; }
-    ul { padding-left: 1.25rem; }
-    a { color: #0b57d0; }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <h1>Secure Coding Review — Login Lab</h1>
-  <p>Project: <a href="https://github.com/DAX1208/CodeAlpha_codereview" rel="noopener">CodeAlpha_codereview</a>. Compare vulnerable vs fixed patterns (inspired by <a href="https://github.com/Harsh-jethva/CodeAlpha_Secure-Coding-Review-" rel="noopener">CodeAlpha_Secure-Coding-Review-</a>).</p>
-  <ul>
-    <li><a href="{{ url_for('vulnerable_page') }}">Vulnerable login</a> — SQL injection and unsafe patterns (lab only).</li>
-    <li><a href="{{ url_for('secure_page') }}">Secure login</a> — parameterized queries, bcrypt, safer errors.</li>
-  </ul>
+  <div class="page">
+    <nav class="topbar">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('vulnerable_page') }}">Vulnerable</a>
+      <a href="{{ url_for('secure_page') }}">Secure</a>
+    </nav>
+
+    <main class="shell">
+      <section class="hero">
+        <p class="eyebrow">Secure Coding Review</p>
+        <h1>Login Lab</h1>
+        <p class="subtitle">Compare the insecure and fixed implementations side by side. The layout now uses a shared stylesheet so the learning focus is on the code, not the UI.</p>
+      </section>
+
+      <div class="panel">
+        <p class="subtitle" style="margin: 0;">Project: <a href="https://github.com/DAX1208/CodeAlpha_codereview" rel="noopener">CodeAlpha_codereview</a>. Compare vulnerable vs fixed patterns inspired by <a href="https://github.com/Harsh-jethva/CodeAlpha_Secure-Coding-Review-" rel="noopener">CodeAlpha_Secure-Coding-Review-</a>.</p>
+      </div>
+
+      <ul class="links-list">
+        <li><a href="{{ url_for('vulnerable_page') }}"><strong>Vulnerable login</strong><br>SQL injection and unsafe patterns for local study only.</a></li>
+        <li><a href="{{ url_for('secure_page') }}"><strong>Secure login</strong><br>Parameterized queries, bcrypt, and safer error handling.</a></li>
+      </ul>
+    </main>
+  </div>
 </body>
 </html>

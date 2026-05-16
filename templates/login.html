@@ -4,45 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }}</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 28rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
-    h1 { font-size: 1.25rem; }
-    .muted { color: #444; font-size: 0.9rem; }
-    label { display: block; margin-top: 0.75rem; }
-    input[type="text"], input[type="password"] { width: 100%; box-sizing: border-box; padding: 0.4rem 0.5rem; margin-top: 0.25rem; }
-    button { margin-top: 1rem; padding: 0.45rem 1rem; cursor: pointer; }
-    .result { margin-top: 1rem; padding: 0.75rem; border-radius: 6px; }
-    .result.ok { background: #e8f5e9; border: 1px solid #a5d6a7; }
-    .result.bad { background: #fff3e0; border: 1px solid #ffcc80; }
-    .banner { padding: 0.5rem 0.75rem; border-radius: 6px; margin-bottom: 1rem; font-size: 0.9rem; }
-    .banner.warn { background: #fff8e1; border: 1px solid #ffe082; }
-    .banner.safe { background: #e3f2fd; border: 1px solid #90caf9; }
-    nav { margin-bottom: 1rem; font-size: 0.9rem; }
-    nav a { margin-right: 0.75rem; }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
-  <nav>
+<body class="{% if mode == 'vulnerable' %}theme-vulnerable{% else %}theme-secure{% endif %}">
+  <div class="page">
+  <nav class="topbar">
     <a href="{{ url_for('index') }}">Home</a>
     <a href="{{ url_for('vulnerable_page') }}">Vulnerable</a>
     <a href="{{ url_for('secure_page') }}">Secure</a>
   </nav>
 
+  <main class="shell">
   {% if mode == 'vulnerable' %}
   <div class="banner warn"><strong>Lab mode:</strong> intentionally insecure. Do not expose to the internet.</div>
   {% else %}
   <div class="banner safe"><strong>Secure demo:</strong> uses parameterized SQL and bcrypt verification.</div>
   {% endif %}
 
-  <h1>{{ title }}</h1>
-  <p class="muted">{{ subtitle }}</p>
+  <section class="hero">
+    <p class="eyebrow">Secure Coding Review</p>
+    <h1>{{ title }}</h1>
+    <p class="subtitle">{{ subtitle }}</p>
+  </section>
 
-  <form method="post" action="">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" autocomplete="username" required>
+  <form class="panel" method="post" action="">
+    <div>
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" autocomplete="username" required>
+    </div>
 
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" autocomplete="current-password" required>
+    <div>
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+    </div>
 
     <button type="submit">Sign in</button>
   </form>
@@ -50,5 +44,7 @@
   {% if result is not none %}
   <div class="result {% if success %}ok{% else %}bad{% endif %}">{{ result }}</div>
   {% endif %}
+  </main>
+  </div>
 </body>
 </html>
